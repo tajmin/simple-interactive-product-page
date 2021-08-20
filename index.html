@@ -24,46 +24,59 @@
                 </p>
                 <div class="mt-12">
                     <h4 class="mb-2 font-bold">Memory</h4>
-                    <button class="border border-black	p-2 rounded">8GB unified memory</button>
-                    <button class="border border-black	 p-2 rounded">16GB unified memory</button>
+                    <button id="base-memory-btn"
+                        class="border border-black p-2 rounded hover:bg-black hover:text-white">8GB unified
+                        memory</button>
+                    <button id="adv-memory-btn"
+                        class="border border-black p-2 rounded hover:bg-black hover:text-white">16GB unified
+                        memory</button>
                 </div>
 
                 <div>
                     <h1 class="mt-12 mb-2 font-bold">Storage</h1>
-                    <button class="border border-black	p-2 rounded">256GB SSD storage</button>
-                    <button class="border border-black	p-2 rounded">512GB SSD storage</button>
-                    <button class="border border-black	p-2 rounded">1TB storage</button>
+                    <button id="base-storage-btn"
+                        class="border border-black	p-2 rounded hover:bg-black hover:text-white">256GB SSD
+                        storage</button>
+                    <button id="medium-storage-btn"
+                        class="border border-black	p-2 rounded hover:bg-black hover:text-white">512GB SSD
+                        storage</button>
+                    <button id="ultra-storage-btn"
+                        class="border border-black	p-2 rounded hover:bg-black hover:text-white">1TB storage</button>
                 </div>
                 <div>
                     <h1 class="mt-12 mb-2 font-bold">Choose your delivery option</h1>
-                    <button class="border border-black	p-2 rounded">Friday, Aug 25 FREE Prime Delivery</button>
-                    <button class="border border-black	p-2 rounded">Friday,Aug 21 Delivery charge $20</button>
+                    <button id="free-delivery-btn"
+                        class="border border-black	p-2 rounded hover:bg-black hover:text-white">Friday, Aug 25 FREE
+                        Prime Delivery</button>
+                    <button id="charged-delivery-btn"
+                        class="border border-black	p-2 rounded hover:bg-black hover:text-white">Friday,Aug 21
+                        Delivery charge $20</button>
                 </div>
 
                 <div class="grid grid-cols-1 w-1/2">
                     <div class="flex flex-row gap-36">
                         <p>Best Price</p>
-                        <p>$<span>1299</span></p>
+                        <p>$<span id="best-price">1299</span></p>
                     </div>
                     <hr>
                     <div class="flex flex-row gap-20">
                         <p>Extra Memory Cost</p>
-                        <p>$<span>0</span></p>
+                        <p>$<span id="memory-cost">0</span></p>
                     </div>
                     <hr>
                     <div class="flex flex-row gap-20">
                         <p>Extra Storage Cost</p>
-                        <p class="ml-1">$<span>0</span></p>
+                        <p class="ml-1">$<span id="storage-cost">0</span></p>
                     </div>
                     <hr>
                     <div class="flex flex-row gap-24">
                         <p>Delivery Charge</p>
-                        <p class="ml-1">$<span>0</span></p>
+                        <p class="ml-1">$<span id="delivery-cost">0</span></p>
                     </div>
                     <hr>
                     <div class="flex flex-row gap-36">
                         <p>Total Price</p>
-                        <p>$<span>1299</span></p>
+                        <p>$<span id="sub-total-price">1299</span></p>
                     </div>
                     <div>
                         <h4 class="font-semibold">Add Promo Code</h4>
@@ -79,6 +92,7 @@
             <h1 class="mt-8 text-4xl font-semibold text-center">Total: $<span>1299</span> </h1>
         </section>
     </main>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
