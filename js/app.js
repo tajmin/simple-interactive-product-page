@@ -16,71 +16,10 @@ function calculatePrice() {
     return calculatedPrice;
 }
 
-//calculates basee memory price
-document.getElementById('base-memory-btn').addEventListener('click', function () {
-    setFeaturePrice('memory', 0);
-    const price = calculatePrice();
-    setSubTotalPrice(price);
-    setTotalPrice(price);
-});
-
-//calculates advanced memory price
-document.getElementById('adv-memory-btn').addEventListener('click', function () {
-    setFeaturePrice('memory', 180);
-    const price = calculatePrice();
-    setSubTotalPrice(price);
-    setTotalPrice(price);
-});
-
-//calculates basic storage price
-document.getElementById('base-storage-btn').addEventListener('click', function () {
-    setFeaturePrice('storage', 0);
-    const price = calculatePrice();
-    setSubTotalPrice(price);
-    setTotalPrice(price);
-});
-
-//calculates medium storage price
-document.getElementById('medium-storage-btn').addEventListener('click', function () {
-    setFeaturePrice('storage', 100);
-    const price = calculatePrice();
-    setSubTotalPrice(price);
-    setTotalPrice(price);
-});
-
-//calculates ultra storage price 
-document.getElementById('ultra-storage-btn').addEventListener('click', function () {
-    setFeaturePrice('storage', 180);
-    const price = calculatePrice();
-    setSubTotalPrice(price);
-    setTotalPrice(price);
-});
-
-//calculates free delivery
-document.getElementById('free-delivery-btn').addEventListener('click', function () {
-    setFeaturePrice('delivery', 0);
-    const price = calculatePrice();
-    setSubTotalPrice(price);
-    setTotalPrice(price);
-});
-
-//calculates express delivery cost
-document.getElementById('charged-delivery-btn').addEventListener('click', function () {
-    setFeaturePrice('delivery', 20);
-    const price = calculatePrice();
-    setSubTotalPrice(price);
-    setTotalPrice(price);
-});
-
-//Set Subtotal Price
-function setSubTotalPrice(price) {
-    const subTotalPrice = document.getElementById('sub-total-cost');
-    subTotalPrice.innerText = price;
-}
-
+// global scope for promo code availablity
 let isPromoApplied = false;
 
-//calculate discount 
+//calculates discount for promocode
 document.getElementById('promo-btn').addEventListener('click', function () {
     const promoCode = document.getElementById('promo-input');
     const errorMessage = document.getElementById('error-message');
@@ -98,8 +37,31 @@ document.getElementById('promo-btn').addEventListener('click', function () {
     }
 });
 
+//Set Subtotal Price
+function setSubTotalPrice(price) {
+    const subTotalPrice = document.getElementById('sub-total-cost');
+    subTotalPrice.innerText = price;
+}
+
 // set total price
 function setTotalPrice(price) {
     const totalPrice = document.getElementById('total-cost');
     totalPrice.innerText = price;
 }
+
+//Handles button events 
+document.getElementById('product-details').addEventListener('click', function (event) {
+    const id = event.target.id;
+    const featureCost = parseFloat(event.target.dataset.cost);
+
+    if (id.includes('memory')) {
+        setFeaturePrice('memory', featureCost);
+    } else if (id.includes('storage')) {
+        setFeaturePrice('storage', featureCost);
+    } else if (id.includes('delivery')) {
+        setFeaturePrice('delivery', featureCost);
+    }
+    const price = calculatePrice();
+    setSubTotalPrice(price);
+    setTotalPrice(price);
+});
