@@ -1,83 +1,70 @@
-//base memory price
+//Following function adds feature price
+function setFeaturePrice(idPart, price) {
+    const feature = document.getElementById(idPart + '-cost');
+    feature.innerText = price;
+}
+
+//Following function returns feature price
+function getFeaturePrice(idPart) {
+    const price = document.getElementById(idPart + '-cost').innerText
+    return parseFloat(price);
+}
+
+//calculates basee memory price
 document.getElementById('base-memory-btn').addEventListener('click', function () {
-    const memoryCost = document.getElementById('memory-cost');
-    memoryCost.innerText = 0;
-    const price = getBestPrice() + getMemoryCost() + getStorageCost() + getDeliveryCharge();
+    setFeaturePrice('memory', 0);
+    const price = getFeaturePrice('best') + getFeaturePrice('memory') + getFeaturePrice('storage') + getFeaturePrice('delivery');
     setSubTotalPrice(price);
     setTotalPrice(price);
 });
-//advanced memory price
+
+//calculates advanced memory price
 document.getElementById('adv-memory-btn').addEventListener('click', function () {
-    const memoryCost = document.getElementById('memory-cost');
-    memoryCost.innerText = 180
-    const price = getBestPrice() + getMemoryCost() + getStorageCost() + getDeliveryCharge();
+    setFeaturePrice('memory', 180);
+    const price = getFeaturePrice('best') + getFeaturePrice('memory') + getFeaturePrice('storage') + getFeaturePrice('delivery');
     setSubTotalPrice(price);
     setTotalPrice(price);
 });
-//basic storage price
+
+//calculates basic storage price
 document.getElementById('base-storage-btn').addEventListener('click', function () {
-    const storageCost = document.getElementById('storage-cost');
-    storageCost.innerText = 0;
-    const price = getBestPrice() + getMemoryCost() + getStorageCost() + getDeliveryCharge();
+    setFeaturePrice('storage', 0);
+    const price = getFeaturePrice('best') + getFeaturePrice('memory') + getFeaturePrice('storage') + getFeaturePrice('delivery');
     setSubTotalPrice(price);
     setTotalPrice(price);
 });
 
-//medium storage price
+//calculates medium storage price
 document.getElementById('medium-storage-btn').addEventListener('click', function () {
-    document.getElementById('storage-cost').innerText = 100;
-    const price = getBestPrice() + getMemoryCost() + getStorageCost() + getDeliveryCharge();
+    setFeaturePrice('storage', 100);
+    const price = getFeaturePrice('best') + getFeaturePrice('memory') + getFeaturePrice('storage') + getFeaturePrice('delivery');
     setSubTotalPrice(price);
     setTotalPrice(price);
 });
 
-//ultra storage price 
+//calculates ultra storage price 
 document.getElementById('ultra-storage-btn').addEventListener('click', function () {
-    document.getElementById('storage-cost').innerText = 180;
-    const price = getBestPrice() + getMemoryCost() + getStorageCost() + getDeliveryCharge();
+    setFeaturePrice('storage', 180);
+    const price = getFeaturePrice('best') + getFeaturePrice('memory') + getFeaturePrice('storage') + getFeaturePrice('delivery');
     setSubTotalPrice(price);
     setTotalPrice(price);
 });
 
-//free delivery
+//calculates free delivery
 document.getElementById('free-delivery-btn').addEventListener('click', function () {
-    document.getElementById('delivery-cost').innerText = 0;
-    const price = getBestPrice() + getMemoryCost() + getStorageCost() + getDeliveryCharge();
+    setFeaturePrice('delivery', 0);
+    const price = getFeaturePrice('best') + getFeaturePrice('memory') + getFeaturePrice('storage') + getFeaturePrice('delivery');
     setSubTotalPrice(price);
     setTotalPrice(price);
 });
 
-//delivery fee 
+//calculates express delivery cost
 document.getElementById('charged-delivery-btn').addEventListener('click', function () {
-    document.getElementById('delivery-cost').innerText = 20;
-    const price = getBestPrice() + getMemoryCost() + getStorageCost() + getDeliveryCharge();
+    setFeaturePrice('delivery', 20);
+    const price = getFeaturePrice('best') + getFeaturePrice('memory') + getFeaturePrice('storage') + getFeaturePrice('delivery');
     setSubTotalPrice(price);
     setTotalPrice(price);
 });
-
-//Get Best Price
-function getBestPrice() {
-    const price = document.getElementById('best-cost').innerText
-    return parseInt(price);
-}
-
-//Get Memory Cost
-function getMemoryCost() {
-    const cost = document.getElementById('memory-cost').innerText
-    return parseInt(cost);
-}
-
-//Get Storage Cost
-function getStorageCost() {
-    const cost = document.getElementById('storage-cost').innerText
-    return parseInt(cost);
-}
-
-//Get Delivery charge
-function getDeliveryCharge() {
-    const cost = document.getElementById('delivery-cost').innerText
-    return parseInt(cost);
-}
 
 //Get SubTotal Price
 function getSubTotalPrice() {
