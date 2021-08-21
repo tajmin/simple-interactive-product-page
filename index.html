@@ -53,35 +53,37 @@
                         Delivery charge $20</button>
                 </div>
                 <!-- ---------------------------------table --------------------->
-                <table class="table-auto p-16 text-sm font-bold">
+                <table class="table-auto mt-12 p-16 text-sm font-bold">
                     <tbody>
-                        <tr class="bg-red-200">
+                        <tr class="py-16">
                             <td>Best Price</td>
-                            <td class="pl-8">$1299</td>
+                            <td class="pl-8">$<span id="best-price">1299</span></td>
                         </tr>
                         <tr>
                             <td>Extra Memory Cost</td>
-                            <td class="pl-8">$0</td>
+                            <td class="pl-8">$<span id="memory-cost">0</span></td>
                         </tr>
                         <tr>
                             <td>Extra Storage Cost</td>
-                            <td class="pl-8">$0</td>
+                            <td class="pl-8">$<span id="storage-cost">0</span></td>
                         </tr>
                         <tr>
                             <td>Delivery Charge</td>
-                            <td class="pl-8">$0</td>
+                            <td class="pl-8">$<span id="delivery-cost">0</span></td>
                         </tr>
                         <tr>
                             <td>Total Price</td>
-                            <td class="pl-8">$0</td>
+                            <td class="pl-8">$<span id="sub-total-price">1299</span></td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="grid grid-cols-2 w-1/2">
+                <div class="w-1/2">
                     <h4 class="font-semibold">Add Promo Code</h4>
                     <br>
-                    <input class="border-2 border-gray-200 py-1 rounded-md" type="text"><button
-                        class="px-4 py-1.5 bg-red-600 text-white rounded-md">Apply</button>
+                    <input id="promo-input" class="border-2 border-gray-200 py-1 rounded-md" type="text">
+                    <button id="promo-btn" class="px-4 py-1.5 bg-red-600 text-white rounded-md">Apply</button>
+                    <br>
+                    <p id="error-message"></p>
 
                 </div>
             </div>
@@ -91,7 +93,7 @@
 
         <section class="w-2/3 mx-auto mt-12">
             <hr>
-            <h1 class="mt-8 text-4xl font-semibold text-center">Total: $<span>1299</span> </h1>
+            <h1 class="mt-8 text-4xl font-semibold text-center">Total: $<span id="total-price">1299</span> </h1>
         </section>
 
     </main>
