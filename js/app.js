@@ -57,7 +57,7 @@ document.getElementById('charged-delivery-btn').addEventListener('click', functi
 
 //Get Best Price
 function getBestPrice() {
-    const price = document.getElementById('best-price').innerText
+    const price = document.getElementById('best-cost').innerText
     return parseInt(price);
 }
 
