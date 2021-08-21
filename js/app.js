@@ -4,16 +4,22 @@ function setFeaturePrice(idPart, price) {
     feature.innerText = price;
 }
 
-//Following function returns feature price
-function getFeaturePrice(idPart) {
+//Following function returns price by id
+function getPrice(idPart) {
     const price = document.getElementById(idPart + '-cost').innerText
     return parseFloat(price);
+}
+
+// Following function calculates sum of all feature prices
+function calculatePrice() {
+    const calculatedPrice = getPrice('best') + getPrice('memory') + getPrice('storage') + getPrice('delivery');
+    return calculatedPrice;
 }
 
 //calculates basee memory price
 document.getElementById('base-memory-btn').addEventListener('click', function () {
     setFeaturePrice('memory', 0);
-    const price = getFeaturePrice('best') + getFeaturePrice('memory') + getFeaturePrice('storage') + getFeaturePrice('delivery');
+    const price = calculatePrice();
     setSubTotalPrice(price);
     setTotalPrice(price);
 });
@@ -21,7 +27,7 @@ document.getElementById('base-memory-btn').addEventListener('click', function ()
 //calculates advanced memory price
 document.getElementById('adv-memory-btn').addEventListener('click', function () {
     setFeaturePrice('memory', 180);
-    const price = getFeaturePrice('best') + getFeaturePrice('memory') + getFeaturePrice('storage') + getFeaturePrice('delivery');
+    const price = calculatePrice();
     setSubTotalPrice(price);
     setTotalPrice(price);
 });
@@ -29,7 +35,7 @@ document.getElementById('adv-memory-btn').addEventListener('click', function () 
 //calculates basic storage price
 document.getElementById('base-storage-btn').addEventListener('click', function () {
     setFeaturePrice('storage', 0);
-    const price = getFeaturePrice('best') + getFeaturePrice('memory') + getFeaturePrice('storage') + getFeaturePrice('delivery');
+    const price = calculatePrice();
     setSubTotalPrice(price);
     setTotalPrice(price);
 });
@@ -37,7 +43,7 @@ document.getElementById('base-storage-btn').addEventListener('click', function (
 //calculates medium storage price
 document.getElementById('medium-storage-btn').addEventListener('click', function () {
     setFeaturePrice('storage', 100);
-    const price = getFeaturePrice('best') + getFeaturePrice('memory') + getFeaturePrice('storage') + getFeaturePrice('delivery');
+    const price = calculatePrice();
     setSubTotalPrice(price);
     setTotalPrice(price);
 });
@@ -45,7 +51,7 @@ document.getElementById('medium-storage-btn').addEventListener('click', function
 //calculates ultra storage price 
 document.getElementById('ultra-storage-btn').addEventListener('click', function () {
     setFeaturePrice('storage', 180);
-    const price = getFeaturePrice('best') + getFeaturePrice('memory') + getFeaturePrice('storage') + getFeaturePrice('delivery');
+    const price = calculatePrice();
     setSubTotalPrice(price);
     setTotalPrice(price);
 });
@@ -53,7 +59,7 @@ document.getElementById('ultra-storage-btn').addEventListener('click', function 
 //calculates free delivery
 document.getElementById('free-delivery-btn').addEventListener('click', function () {
     setFeaturePrice('delivery', 0);
-    const price = getFeaturePrice('best') + getFeaturePrice('memory') + getFeaturePrice('storage') + getFeaturePrice('delivery');
+    const price = calculatePrice();
     setSubTotalPrice(price);
     setTotalPrice(price);
 });
@@ -61,20 +67,14 @@ document.getElementById('free-delivery-btn').addEventListener('click', function 
 //calculates express delivery cost
 document.getElementById('charged-delivery-btn').addEventListener('click', function () {
     setFeaturePrice('delivery', 20);
-    const price = getFeaturePrice('best') + getFeaturePrice('memory') + getFeaturePrice('storage') + getFeaturePrice('delivery');
+    const price = calculatePrice();
     setSubTotalPrice(price);
     setTotalPrice(price);
 });
 
-//Get SubTotal Price
-function getSubTotalPrice() {
-    const cost = document.getElementById('sub-total-price').innerText
-    return parseInt(cost);
-}
-
 //Set Subtotal Price
 function setSubTotalPrice(price) {
-    const subTotalPrice = document.getElementById('sub-total-price');
+    const subTotalPrice = document.getElementById('sub-total-cost');
     subTotalPrice.innerText = price;
 }
 
@@ -87,7 +87,7 @@ document.getElementById('promo-btn').addEventListener('click', function () {
     errorMessage.innerText = '';
 
     if (promoCode.value == 'stevekaku' && !isPromoApplied) {
-        const price = getSubTotalPrice();
+        const price = getPrice('sub-total');
         const discountedPrice = price * (1 - 0.2);
         isPromoApplied = true;
         setTotalPrice(discountedPrice)
@@ -98,13 +98,8 @@ document.getElementById('promo-btn').addEventListener('click', function () {
     }
 });
 
-// get Total Price 
-function getTotalPrice() {
-    const totalPrice = document.getElementById('total-price')
-    return parseFloat(totalPrice);
-}
 // set total price
 function setTotalPrice(price) {
-    const totalPrice = document.getElementById('total-price');
+    const totalPrice = document.getElementById('total-cost');
     totalPrice.innerText = price;
 }
