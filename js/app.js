@@ -22,18 +22,20 @@ let isPromoApplied = false;
 //calculates discount for promocode
 document.getElementById('promo-btn').addEventListener('click', function () {
     const promoCode = document.getElementById('promo-input');
-    const errorMessage = document.getElementById('error-message');
-    errorMessage.innerText = '';
+    const message = document.getElementById('message');
+    message.innerText = '';
 
     if (promoCode.value == 'stevekaku' && !isPromoApplied) {
         const price = getPrice('sub-total');
         const discountedPrice = price * (1 - 0.2);
         isPromoApplied = true;
         setTotalPrice(discountedPrice)
+        message.innerText = 'Promo code applied succesfully!'
+        message.style.color = 'green'
         promoCode.value = '';
     } else {
-        errorMessage.innerText = 'Proco code already applied or promo code not found!'
-        errorMessage.style.color = 'red'
+        message.innerText = 'Proco code already applied or promo code not found!'
+        message.style.color = 'red'
     }
 });
 
